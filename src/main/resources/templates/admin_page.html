@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Role</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.password}"></td>
+        <td th:text="${user.getStringRole()}"></td>
+        <td>
+            <a th:href="@{'/admin/update?id=' + ${user.getId()}}">Update</a>
+        </td>
+        <td>
+            <a th:href="@{'/admin/delete?id=' + ${user.getId()}}">Delete</a>
+        </td>
+    </tr>
+</table>
+<input type="button" value="Create new user" onclick="window.location.href = '/admin/create'"/>
+<br>
+<input type="button" value="Log out" onclick="window.location.href = '/logout'"/>
+
+</body>
+</html>
