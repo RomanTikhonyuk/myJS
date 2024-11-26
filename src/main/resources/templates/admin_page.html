@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
@@ -135,7 +135,8 @@
                                                                                 <label class="form-label"
                                                                                        for="id">ID</label>
                                                                                 <input class="form-control" id="id"
-                                                                                       placeholder="id" readonly="readonly"
+                                                                                       placeholder="id"
+                                                                                       readonly="readonly"
                                                                                        th:name="id"
                                                                                        th:value="${user.id}"
                                                                                        type="text"/>
@@ -155,7 +156,8 @@
                                                                                 <label class="form-label" for="email">Email</label>
                                                                                 <input class="form-control"
                                                                                        id="email"
-                                                                                       placeholder="Введите Email" th:name="email"
+                                                                                       placeholder="Введите Email"
+                                                                                       th:name="email"
                                                                                        th:value="${user.email}"
                                                                                        type="email"><br>
 
@@ -234,21 +236,24 @@
                                                                                        id="idDelete"
                                                                                        name="id"
                                                                                        readonly
-                                                                                       th:value="${user.id}" type="text">
+                                                                                       th:value="${user.id}"
+                                                                                       type="text">
                                                                                 <br>
                                                                                 <label class="form-label fw-bold mb-0"
                                                                                        for="usernameDelete">Email</label>
                                                                                 <input class="form-control"
                                                                                        id="usernameDelete"
                                                                                        readonly
-                                                                                       th:value="${user.username}" type="text">
+                                                                                       th:value="${user.username}"
+                                                                                       type="text">
                                                                                 <br>
                                                                                 <label class="form-label fw-bold mb-0"
                                                                                        for="emailDelete">Email</label>
                                                                                 <input class="form-control"
                                                                                        id="emailDelete"
                                                                                        readonly
-                                                                                       th:value="${user.email}" type="text">
+                                                                                       th:value="${user.email}"
+                                                                                       type="text">
                                                                                 <br>
                                                                                 <label class="form-label fw-bold mb-0"
                                                                                        for="rolesDelete">Role</label>
@@ -303,7 +308,8 @@
 
                                             <br>
                                             <label class="form-label fw-bold mb-0" for="emailCreate">Email</label>
-                                            <input class="form-control" id="emailCreate" placeholder="Email" th:name="email"
+                                            <input class="form-control" id="emailCreate" placeholder="Email"
+                                                   th:name="email"
                                                    type="text">
                                             <br>
                                             <label class="form-label fw-bold mb-0" for="passwordCreate">Password</label>

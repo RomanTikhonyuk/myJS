@@ -1,11 +1,7 @@
 package com.example.bs;
 
-import com.example.bs.models.User;
-import com.example.bs.service.RoleService;
-import com.example.bs.service.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class BsApplication {
@@ -44,5 +40,5 @@ public class BsApplication {
 //
 //		} catch (Exception ignored) {
 //		}
-   }
+    }
 }

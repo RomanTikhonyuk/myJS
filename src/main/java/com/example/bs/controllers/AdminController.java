@@ -39,7 +39,7 @@ public class AdminController {
     }
 
     @PostMapping("/createuser")
-    public String createUser(@ModelAttribute("user")  User user,
+    public String createUser(@ModelAttribute("user") User user,
                              BindingResult bindingResult, @RequestParam("role") String selectedRole) {
         if (bindingResult.hasErrors()) {
             return "admin_page";
@@ -73,7 +73,7 @@ public class AdminController {
     }
 
     @PostMapping("/updateuser")
-    public String updateUser(@ModelAttribute("user")  User user,
+    public String updateUser(@ModelAttribute("user") User user,
                              BindingResult bindingResult,
                              @RequestParam("role") String selectedRole,
                              @RequestParam("id") Long id) {
