@@ -1,9 +1,7 @@
 package com.example.bs.models;
 
-import com.example.bs.utils.UserUtil;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -12,8 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "users")
 public class User implements UserDetails {
     @Id
@@ -38,17 +35,4 @@ public class User implements UserDetails {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> authorities;
-
-    public User(Long id, String username, String password, Collection<Role> authorities, String email) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.authorities = authorities;
-        this.email = email;
-    }
-    public User() {
-    }
-    public String getStringRole() {
-        return UserUtil.getStringRoles(authorities);
-    }
 }

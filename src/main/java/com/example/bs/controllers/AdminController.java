@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import java.security.Principal;
+
 
 @Controller
 @RequestMapping("/admin")
@@ -23,26 +25,27 @@ public class AdminController {
     }
 
     @GetMapping
-    public String readAllUsers(Model model) {
+    public String readAllUsers(Principal principal, Model model) {
         model.addAttribute("users", userService.readAllUsers());
-        return "admin_page2";
+        model.addAttribute("admin", userService.findByUsername(principal.getName()));
+        return "admin_page";
     }
 
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("roles", roleService.findAll());
-        return "create";
+        return "admin_page";
     }
 
     @PostMapping("/createuser")
     public String createUser(@ModelAttribute("user")  User user,
                              BindingResult bindingResult, @RequestParam("role") String selectedRole) {
         if (bindingResult.hasErrors()) {
-            return "create";
+            return "admin_page";
         }
         if (selectedRole.equals("ROLE_USER")) {
-            user.setAuthorities(roleService.findByUsername("ROLE_USER"));
+            user.setAuthorities(roleService.findByName("ROLE_USER"));
         } else if (selectedRole.equals("ROLE_ADMIN")) {
             user.setAuthorities(roleService.findAll());
         }
@@ -53,7 +56,7 @@ public class AdminController {
     @GetMapping("/delete")
     public String delete(Model model, @RequestParam("id") Long id) {
         model.addAttribute(userService.readUserById(id));
-        return "delete";
+        return "admin_page";
     }
 
     @PostMapping("/deleteuser")
@@ -66,7 +69,7 @@ public class AdminController {
     public String update(Model model,
                          @RequestParam("id") Long id) {
         model.addAttribute(userService.readUserById(id));
-        return "update";
+        return "admin_page";
     }
 
     @PostMapping("/updateuser")
@@ -75,10 +78,10 @@ public class AdminController {
                              @RequestParam("role") String selectedRole,
                              @RequestParam("id") Long id) {
         if (bindingResult.hasErrors()) {
-            return "update";
+            return "redirect:/admin";
         }
         if (selectedRole.equals("ROLE_USER")) {
-            user.setAuthorities(roleService.findByUsername("ROLE_USER"));
+            user.setAuthorities(roleService.findByName("ROLE_USER"));
         } else if (selectedRole.equals("ROLE_ADMIN")) {
             user.setAuthorities(roleService.findAll());
         }
