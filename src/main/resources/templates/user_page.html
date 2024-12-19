@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <title>Page</title>
+</head>
+
+<body>
+<header>
+    <div class="bs">
+        <div class="container-fluid bg-dark text-white my-4" >
+            <div class="row gx-5">
+                <div class="col-lg-1 ms-auto">
+                    <form th:action="@{/logout}" method="get">
+                        <button type="submit" class="btn bg-dark text-secondary">Выход</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="d-flex align-items-start">
+    <!-- Создаем кнопку слева для получения информации о юзере -->
+    <div class="col-2">
+        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link active" id="v-pills-user-tab" data-bs-toggle="pill" data-bs-target="#v-pills-user" type="button" role="tab" aria-controls="v-pills-user" aria-selected="true">Пользователь</button>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <h1 >Общая информация о пользователе </h1>
+
+        <div class="p-3 border bg-light">
+            <table class="table table-secondary table-striped table-hover caption-top table-bordered ">
+                <h5>О пользователе </h5>
+                <thead class="table-light">
+                <tr>
+                    <th class="col">Id</th>
+                    <th class="col">Username</th>
+                    <th class="col">Email</th>
+                    <th class="col">Role</th>
+                </tr>
+                </thead>
+                <tbody id="userTable"></tbody>
+            </table>
+            <br>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script src="/user.js"></script>
+</body>
+</html>
