@@ -14,12 +14,12 @@
     <nav class="navbar navbar-dark bg-dark p-0 shadow">
         <div class="nav-item text-left text-white px-3">
 
-<!--            &lt;!&ndash;Имя + Роль вошедшего&ndash;&gt;-->
-<!--            <span class="fw-bold " th:text="${admin.username}"></span>-->
-<!--            <span>with roles:</span>-->
-<!--            <span th:each="role : ${admin.authorities}"-->
-<!--                  th:text="${#strings.substring(role.getAuthority(), 5)} + ' '">-->
-<!--            </span>-->
+            <!--Имя + Роль вошедшего-->
+            <span class="fw-bold " th:text="${admin.username}"></span>
+            <span>with roles:</span>
+            <span th:each="role : ${admin.authorities}"
+                  th:text="${#strings.substring(role.getAuthority(), 5)} + ' '">
+            </span>
         </div>
 
         <!--Logout-->
@@ -93,8 +93,8 @@
                                                     <th>Delete</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody id="admin_panel"></tbody>
-<!--                                                <tbody> -->
+                                                <tbody id="admin_panel">
+                                                </tbody>
 <!--                                                <tr th:each="user : ${users}">-->
 <!--                                                    <td th:text="${user.id}">Id</td>-->
 <!--                                                    <td th:text="${user.username}">Name</td>-->
@@ -287,7 +287,6 @@
 <!--                                                    </td>-->
 
 <!--                                                </tr>-->
-<!--                                                </tbody>-->
                                             </table>
                                         </div>
                                     </div>
@@ -386,7 +385,7 @@
 </div>
 </div>
 
-<script src="/admin.js"></script>
+<script src="admin.js"></script>
 <script crossorigin="anonymous"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

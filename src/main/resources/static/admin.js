@@ -21,12 +21,12 @@ function loadTable(listAllUsers) {
                 <td>${user.id}</td>
                 <td>${user.username}</td>
                 <td>${user.email}</td>
-                <td>
-                <span th:each="role : ${user.authorities}"
-                 th:text="${#strings.substring(role.getAuthority(), 5)} + ' '">
-                </span>
-                </td>
-                
+              
+<!--                <td>${user.authorities.map(role => role.name.substring(5).concat(" ")).toString().replaceAll(",", "")} Пустая таблица</td>-->
+<!--                <td>${user.roles.toString()} Пустая таблица </td> -->
+<!--                <td>${user.roles}</td> Работает, undefined в Роли -->
+<!--                <td>${user.authorities} Работает, Обьект в Роли </td>-->  
+                 
                 <td>
                     <button id="button-edit" class="btn btn-sm btn-primary" type="button"
                     data-bs-toggle="modal" href="#editModal"
@@ -43,7 +43,7 @@ function loadTable(listAllUsers) {
 
 // Получение всех ролей, используем loadRole
 function getAllRoles() {
-    fetch(`${URL}/roles/`)
+    fetch(`${URL}/users/roles/`)
         .then(res => res.json())
         .then(data => {
             loadRole(data);
