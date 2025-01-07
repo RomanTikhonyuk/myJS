@@ -3,6 +3,7 @@ package com.example.bs.models;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
+
 import java.util.Collection;
 
 @Data

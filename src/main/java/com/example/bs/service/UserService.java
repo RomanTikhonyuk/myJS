@@ -1,6 +1,7 @@
 package com.example.bs.service;
 
 import com.example.bs.models.User;
+
 import java.util.List;
 
 public interface UserService {

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -22,15 +23,12 @@ public class MyRestController {
         this.userService = userService;
         this.roleService = roleService;
     }
+
     @GetMapping("/users")
     public List<User> getAllUsers() {
         return userService.readAllUsers();
     }
 
-//    @GetMapping("/users")
-//    public ResponseEntity<List<User>> getAllUsers() {
-//        return new ResponseEntity<>(userService.readAllUsers(), HttpStatus.OK);
-//    }
 
     @GetMapping("/users/{id}")
     public ResponseEntity<User> getUser(@PathVariable("id") Long id) {
@@ -45,7 +43,7 @@ public class MyRestController {
 
     @PutMapping("/users")
     public ResponseEntity<HttpStatus> updateUser(@RequestBody User user, Long id) {
-        userService.updateUser(id,user);
+        userService.updateUser(id, user);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
@@ -59,6 +57,7 @@ public class MyRestController {
     public ResponseEntity<List<Role>> getAllRoles() {
         return new ResponseEntity<>(roleService.findAll(), HttpStatus.OK);
     }
+
     @GetMapping("/users/current")
     public User getCurrentUser(@AuthenticationPrincipal User user) {
         return user;

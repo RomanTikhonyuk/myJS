@@ -4,6 +4,7 @@ import com.example.bs.models.Role;
 import com.example.bs.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -31,4 +32,5 @@ public class RoleServiceImpl implements RoleService {
     public Collection<Role> findByName(String name) {
         return roleRepository.findByName(name);
     }
+
 }

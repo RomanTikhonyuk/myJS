@@ -1,22 +1,35 @@
-const userUrl = 'http://localhost:8080/api/users/current';
+document.addEventListener('DOMContentLoaded', async function () {
+    // await usersNavbar()
+    await usersTable();
+});
 
-
-function getPage() {
-    fetch(userUrl).then(response => response.json()).then(user =>
-        getInformation(user))
+async function dataAboutCurrentUser() {
+    const response = await fetch("/api/users/current")
+    return await response.json();
 }
 
-function getInformation(user) {
-    console.log(user)
+async function usersTable() {
+    const currentUserTable = document.getElementById("currentUserTable");
+    const currentUser = await dataAboutCurrentUser();
 
-    document.getElementById('userTable').innerHTML = `<tr>
-            <td>${user.id}</td>
-            <td>${user.username}</td>
-            <td>${user.email}</td>
-            <td>${user.rolesToString}</td>
+    let currentUserTableHTML = "";
+    currentUserTableHTML +=
+        `<tr>
+            <td>${currentUser.id}</td>
+            <td>${currentUser.username}</td>
+            <td>${currentUser.email}</td>
+            <td>${currentUser.authorities.map(role => role.name.substring(5).concat(" ")).toString().replaceAll(",", "")}</td>
+        </tr>`
+    userTable.innerHTML = currentUserTableHTML;
 
-        </tr>`;
-
+    //Вошедший пользователь
+    async function usersNavbar() {
+        const currentUserEmailNavbar = document.getElementById("currentUserEmailNavbar")
+        const currentUser = await dataAboutCurrentUser();
+        currentUserEmailNavbar.innerHTML =
+            `<strong>${currentUser.username}</strong>
+                 with roles: 
+                 ${currentUser.authorities.map(role => role.name.substring(5).concat(" ")).toString().replaceAll(",", "")}`;
+    }
 }
 
-getPage();
